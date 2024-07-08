@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">أسعار الصرف الآن</string>
+    <string name="title_activity_main">أسعار الصرف الآن</string>
+    <string name="package_name">com.mousarate.app</string>
+    <string name="custom_url_scheme">com.mousarate.app</string>
+</resources>

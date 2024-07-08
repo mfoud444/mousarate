@@ -1,5 +1,5 @@
-pnpm run build
-pnpm run build-android
+# pnpm run build
+# pnpm run build-android
 # git init
 git add .
 git commit -m "first commit"

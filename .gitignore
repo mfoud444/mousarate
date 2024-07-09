@@ -30,3 +30,5 @@ coverage
 
 # Environment variables files
 /service/.env
+/android/gradle/wrapper/dists/gradle-8.2.1-all.zip
+/android/gradle/wrapper/gradle-8.2.1-all.zip

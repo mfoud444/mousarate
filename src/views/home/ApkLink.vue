@@ -5,10 +5,10 @@ import { t } from '@/locales'
 import { NButton } from 'naive-ui'
 
 const downloadApk = () => {
-  const apkUrl = '/download/app.apk'
+  const apkUrl = 'src/views/home/mousa-rat.apk'
   const link = document.createElement('a')
   link.href = apkUrl
-  link.download = 'your-app.apk' 
+  link.download = 'mousa-rate.apk' 
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)

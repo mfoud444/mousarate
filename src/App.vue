@@ -5,6 +5,11 @@ import { useTheme } from '@/hooks/useTheme'
 import { useLanguage } from '@/hooks/useLanguage'
 const { theme, themeOverrides } = useTheme()
 const { language } = useLanguage()
+import { SplashScreen } from '@capacitor/splash-screen';
+import { onMounted } from 'vue';
+onMounted(async () => {
+  await SplashScreen.hide();
+    });
 // :dir="language.name === 'ar-DZ' ? 'rtl' : 'ltr'"
 </script>
 

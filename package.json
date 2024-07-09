@@ -24,6 +24,7 @@
     "@capacitor/android": "^6.1.0",
     "@capacitor/core": "^6.1.0",
     "@capacitor/ios": "^6.1.0",
+    "@capacitor/splash-screen": "^6.0.1",
     "@prisma/client": "^5.7.0",
     "@tensorflow/tfjs": "^4.17.0",
     "@traptitech/markdown-it-katex": "^3.6.0",

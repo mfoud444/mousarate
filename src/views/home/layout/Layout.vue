@@ -26,7 +26,7 @@ const getContainerClass = computed(() => {
 
 <template>
 
-  <div class="h-full h-[100vh]   dark:bg-[#24272e] transition-all">
+  <div class="h-[100vh]   dark:bg-[#24272e] transition-all">
     
     <div class="h-full overflow-auto" :class="getMobileClass">
       <NLayout class="z-40  transition"  has-sider>

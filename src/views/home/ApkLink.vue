@@ -8,7 +8,7 @@ const loading = ref(false);
 const downloadApk = async () => {
   try {
     loading.value = true
-    const apkFileName = '/assets/mousa-rate.apk'; 
+    const apkFileName = 'assets/mousa-rate.apk'; 
     const response = await fetch(apkFileName);
     
     if (!response.ok) {

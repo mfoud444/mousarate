@@ -80,15 +80,16 @@ async function goStart() {
 
 function shareToWhatsApp() {
   if (!data.value) return;
-
+const websiteUrl = "https://mousarate.onrender.com/";
   let message = "أسعار الصرف:\n\n";
   data.value.forEach((city) => {
-    message += `${city.city}:\n`;
+    message += ` *${city.city}* :\n`;
     message += `SAR شراء: ${city.sar_buy} | بيع: ${city.sar_sell}\n`;
     message += `USD شراء: ${city.usd_buy} | بيع: ${city.usd_sell}\n\n`;
   });
 
   message += `آخر تحديث: ${time.value.toLocaleString()}`;
+  message += `لمزيد من المعلومات، يرجى زيارة موقعنا:\n ${websiteUrl}`;
 
   const encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/+966533646094?text=${encodedMessage}`, '_blank');
@@ -143,13 +144,16 @@ const columns = [
     <NSpin size="large" v-if="initialLoading" />
     <div v-if="!initialLoading && !error && data.length !== 0" class="flex items-center justify-between w-full">
       <div>
+      
         <div class="flex items-center gap-2 bg-blue-100 p-2 rounded-full px-6">
           <NTime :time="time" />
           <NBadge dot type="error" processing></NBadge>
-          <div v-if="!initialLoading && !error && data.length > 0" @click="shareToWhatsApp" class="icon-wrapper cursor-pointer">
+     
+        </div>
+        <div v-if="!initialLoading && !error && data.length > 0" @click="shareToWhatsApp" class="icon-wrapper  bg-green-400 p-2 rounded-full px-6 mt-2 cursor-pointer">
       <SvgIcon icon="logos:whatsapp" />
     </div>
-        </div>
+  
         
       </div>
       <NButton :loading="loadingUpdate" type="primary" @click="goStart">تحديث</NButton>

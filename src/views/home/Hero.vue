@@ -78,6 +78,22 @@ async function goStart() {
   await fetchData();
 }
 
+function shareToWhatsApp() {
+  if (!data.value) return;
+
+  let message = "أسعار الصرف:\n\n";
+  data.value.forEach((city) => {
+    message += `${city.city}:\n`;
+    message += `SAR شراء: ${city.sar_buy} | بيع: ${city.sar_sell}\n`;
+    message += `USD شراء: ${city.usd_buy} | بيع: ${city.usd_sell}\n\n`;
+  });
+
+  message += `آخر تحديث: ${time.value.toLocaleString()}`;
+
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/+966533646094?text=${encodedMessage}`, '_blank');
+}
+
 onMounted(() => {
   fetchData();
   const intervalId = setInterval(fetchData, 2 * 60 * 1000); 
@@ -89,36 +105,40 @@ onMounted(() => {
 
 const columns = [
   {
-    title: 'مدينة',
+    title: 'المدينة',
     key: 'city',
     align: 'center',
+    width:88,
   },
   {
     title: 'سعر الشراء',
     key: 'sar_buy',
     align: 'center',
+    width:70,
  
   },
   {
     title: 'سعر البيع',
     key: 'sar_sell',
     align: 'center',
+    width:70,
   },
   {
     title: 'سعر الشراء',
     key: 'usd_buy',
     align: 'center',
+    width:70,
   },
   {
     title: 'سعر البيع',
     key: 'usd_sell',
     align: 'center',
+    width:70,
   }
 ];
 </script>
 
 <template>
- 
   <div class="flex flex-col items-center justify-center space-y-2 min-h-[330px]">
     <NSpin size="large" v-if="initialLoading" />
     <div v-if="!initialLoading && !error && data.length !== 0" class="flex items-center justify-between w-full">
@@ -126,11 +146,18 @@ const columns = [
         <div class="flex items-center gap-2 bg-blue-100 p-2 rounded-full px-6">
           <NTime :time="time" />
           <NBadge dot type="error" processing></NBadge>
+          <div v-if="!initialLoading && !error && data.length > 0" @click="shareToWhatsApp" class="icon-wrapper cursor-pointer">
+      <SvgIcon icon="logos:whatsapp" />
+    </div>
         </div>
+        
       </div>
       <NButton :loading="loadingUpdate" type="primary" @click="goStart">تحديث</NButton>
     </div>
-    <NDataTable class=" rounded-lg"  :single-line="false" striped v-if="!initialLoading && !error && data.length > 0"
+
+ 
+
+    <NDataTable class="rounded-lg" :single-line="false" striped v-if="!initialLoading && !error && data.length > 0"
       dir="rtl" :columns="columns" :data="data" />
     <NResult v-if="!initialLoading && (error || data.length === 0)" status="error" title="خطاء"
       :description="errorMessage">
@@ -139,8 +166,12 @@ const columns = [
       </template>
     </NResult>
   </div>
-
-
-
-
 </template>
+
+<style scoped>
+.icon-wrapper {
+  cursor: pointer;
+  font-size: 1.4rem;
+
+}
+</style>

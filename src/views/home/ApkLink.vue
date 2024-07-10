@@ -5,7 +5,7 @@ import { t } from '@/locales'
 import { NButton } from 'naive-ui'
 import { ref } from 'vue';
 const loading = ref(false);
-const apkUrl = "https://raw.githubusercontent.com/mfoud444/mousarate/main/src/views/home/mousa-rat.apk"
+const apkUrl = "https://raw.githubusercontent.com/mfoud444/mousarate/main/src/views/home/mousa-rate.apk"
 
 function downloadApk() {
   loading.value = true

@@ -1,7 +1,7 @@
-# pnpm run build
+pnpm run build
 # pnpm run build-android
 # git init
-# cp android/app/release/app-release.apk src/views/home/mousa-rat.apk
+cp android/app/release/app-release.apk dist/assets/mousa-rate.apk
 git add .
 git commit -m "second commit"
 # git branch -M main

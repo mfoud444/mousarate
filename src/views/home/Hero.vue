@@ -5,7 +5,7 @@ import { get } from '@/utils/request';
 import { SvgIcon } from '@/components/common'
 
 const message = useMessage();
-const data = ref([]);
+const data = ref();
 const initialLoading = ref(true);
 const loadingUpdate = ref(false);
 const error = ref(false);
@@ -74,16 +74,16 @@ async function fetchData(): Promise<void> {
 }
 
 async function goStart() {
-  loadingUpdate.value = true; // Set button loading state
+  loadingUpdate.value = true; 
   await fetchData();
 }
 
 onMounted(() => {
   fetchData();
-  const intervalId = setInterval(fetchData, 2 * 60 * 1000); // Update every 2 minutes
+  const intervalId = setInterval(fetchData, 2 * 60 * 1000); 
 
   onUnmounted(() => {
-    clearInterval(intervalId); // Clear the interval when component is unmounted
+    clearInterval(intervalId); 
   });
 });
 
@@ -125,12 +125,12 @@ const columns = [
       <div>
         <div class="flex items-center gap-2 bg-blue-100 p-2 rounded-full px-6">
           <NTime :time="time" />
-          <NBadge dot type="info" processing></NBadge>
+          <NBadge dot type="error" processing></NBadge>
         </div>
       </div>
       <NButton :loading="loadingUpdate" type="primary" @click="goStart">تحديث</NButton>
     </div>
-    <NDataTable :bordered="false" :single-line="false" striped v-if="!initialLoading && !error && data.length > 0"
+    <NDataTable class=" rounded-lg"  :single-line="false" striped v-if="!initialLoading && !error && data.length > 0"
       dir="rtl" :columns="columns" :data="data" />
     <NResult v-if="!initialLoading && (error || data.length === 0)" status="error" title="خطاء"
       :description="errorMessage">

@@ -5,31 +5,43 @@ import { t } from '@/locales'
 import { NButton } from 'naive-ui'
 import { ref } from 'vue';
 const loading = ref(false);
-const downloadApk = async () => {
+const apkUrl = "https://raw.githubusercontent.com/mfoud444/mousarate/main/src/views/home/mousa-rat.apk"
+
+function downloadApk() {
+  loading.value = true
   try {
-    loading.value = true
-    const apkFileName = 'assets/mousa-rate.apk'; 
-    const response = await fetch(apkFileName);
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = apkFileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
-    loading.value = false
+    window.location.href = apkUrl
   } catch (error) {
-    console.error('Download failed:', error);
+    console.error('Download failed:', error)
+  } finally {
     loading.value = false
   }
 }
+// const downloadApk = async () => {
+//   try {
+//     loading.value = true
+//     const apkFileName = 'assets/mousa-rate.apk'; 
+//     const response = await fetch(apkFileName);
+    
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+    
+//     const blob = await response.blob();
+//     const url = window.URL.createObjectURL(blob);
+//     const link = document.createElement('a');
+//     link.href = url;
+//     link.download = apkFileName;
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+//     window.URL.revokeObjectURL(url);
+//     loading.value = false
+//   } catch (error) {
+//     console.error('Download failed:', error);
+//     loading.value = false
+//   }
+// }
 </script>
 
 <template>

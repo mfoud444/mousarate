@@ -2,7 +2,7 @@ import axios, { type AxiosResponse } from 'axios'
 import applyCaseMiddleware from 'axios-case-converter';
 // export const host = "http://localhost/wordpress/"
 export const host = "http://127.0.0.1:8000"
-export const baseURL =  "https://randai09078-mousa-rate.hf.space/"
+export const baseURL =  "https://comparative-nanci-mousa-438a54f9.koyeb.app/"
 export const baseImageUrl = host +  "wp-content/plugins/wp-health-diagnosis-plugin/hd-plugin/frontend/dist/assets/"
 const service = applyCaseMiddleware(axios.create({
   baseURL:baseURL

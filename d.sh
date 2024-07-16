@@ -1,5 +1,5 @@
 pnpm run build
-# pnpm run build-android
+pnpm run build-android
 # git init
 # cp android/app/release/app-release.apk src/views/home/mousa-rate.apk
 git add .
